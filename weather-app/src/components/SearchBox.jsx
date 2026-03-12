@@ -15,6 +15,7 @@ const SearchBox = () => {
         let jsonResponce = await response.json()
 
         let result = {
+            city: city,
             temp: jsonResponce.main.temp,
             tempMax: jsonResponce.main.temp_max,
             tempMin: jsonResponce.main.temp_min,
@@ -56,6 +57,7 @@ const SearchBox = () => {
                     type='submit'>
                     Search
                 </Button>
+
 
             </form>
 
