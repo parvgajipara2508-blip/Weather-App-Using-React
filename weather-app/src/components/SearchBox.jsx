@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 
-const SearchBox = () => {
+const SearchBox = ({ updateinfo }) => {
     const [city, setCity] = useState("")
 
     let API_URL = "https://api.openweathermap.org/data/2.5/weather"
@@ -24,6 +24,8 @@ const SearchBox = () => {
             weather: jsonResponce.weather[0].description,
         };
         console.log(result);
+        return result;
+
 
     }
 
@@ -31,16 +33,17 @@ const SearchBox = () => {
         setCity(evt.target.value)
     }
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault()
         console.log(city);
         setCity("")
-        genWeatherInfo()
+        let newInfo = await genWeatherInfo()
+        updateinfo(newInfo)
 
     }
     return (
         <div className='text-center'>
-            <h1 className='mb-5 mt-5'>Search For the Weather</h1>
+            <h1 className='mb-5 mt-5 font-bold'>Search For the Weather</h1>
             <form onSubmit={handleSubmit} >
 
                 <TextField
@@ -50,11 +53,14 @@ const SearchBox = () => {
                     required
                     value={city}
                     onChange={handleChange}
+
                 />
                 <br /><br />
                 <Button
+
                     variant="contained"
                     type='submit'>
+
                     Search
                 </Button>
 

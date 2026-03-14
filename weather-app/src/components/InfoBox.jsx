@@ -5,23 +5,15 @@ import CardMedia from '@mui/material/CardMedia';
 
 import Typography from '@mui/material/Typography';
 
-const InfoBox = () => {
+const InfoBox = ({ info }) => {
 
     let INIT_URL = "https://images.unsplash.com/photo-1722858343990-1604f540c15d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 
-    let info = {
-        city: "Delhi",
-        feelslike: 24.84,
-        temp: 25.05,
-        tempMin: 25.05,
-        tempMax: 25.05,
-        humidity: 47,
-        weather: "haze"
-    };
+
 
     return (
         <div className='flex justify-center flex-col items-center text-center'>
-            <h1>Wether Info - {info.weather}</h1>
+            <h1 className='font-bold text-2xl mb-3 mt-3'>Wether Info - {info.weather}</h1>
 
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
